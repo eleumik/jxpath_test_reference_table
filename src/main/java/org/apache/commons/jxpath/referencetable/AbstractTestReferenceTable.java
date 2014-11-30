@@ -30,9 +30,8 @@ public abstract class AbstractTestReferenceTable extends TestCase
 
     protected abstract Object getTarget();
 
-    private String xml = "<testBean beanName='root'>\n\t<integer>13</integer>\n\t<string>ciao</string>" + 
-        "\n\t<testBean beanName='child'>\n\t\t<integer>27</integer>\n\t</testBean>\n\t" +
-        "<zlast>last</zlast>\n</testBean>";
+    private String xml = "<testBean beanName='root'>\n\t<integer>13</integer>\n\t<string>ciao</string>" + "\n\t<testBean beanName='child'>\n\t\t<integer>27</integer>\n\t</testBean>\n\t"
+        + "<zlast>last</zlast>\n</testBean>";
     private Document doc;
     {
         try
@@ -330,8 +329,9 @@ public abstract class AbstractTestReferenceTable extends TestCase
         }
         final String noteResult = getNodeResult(xpath);
         writeRow(xpath,
-            // Only when compare is ok use the label provided by caller
-            ("ok".equals(msg) && labelExpected != null) ? labelExpected : result,
+        // Only when compare is ok use the label provided by caller
+            ("ok".equals(msg) && labelExpected != null) ? labelExpected
+                : result,
             msg,
             msgClass,
             note,
@@ -376,8 +376,6 @@ public abstract class AbstractTestReferenceTable extends TestCase
         return null;
     }
 
-    
-
     private void writeRow(String xpath,
         Object result,
         String msg,
@@ -388,7 +386,7 @@ public abstract class AbstractTestReferenceTable extends TestCase
         index++;
         final String resultString = result == null ? "{null}"
             : result.toString();
-        out.write("<tr>");
+        out.write("<tr id='T" + index +"'>");
         out.write("<td>");
         out.write("" + index);
         out.write("</td>");
